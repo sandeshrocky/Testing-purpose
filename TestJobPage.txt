@@ -1,0 +1,64 @@
+<apex:page controller="TestJobController"> 
+<!-- <apex:page controller="TestJobController" > -->
+<apex:form > 
+<apex:pageBlock id="completeBlock">
+     <apex:pageBlock rendered="{!!createflag}">        
+     <apex:pageBlockButtons >
+            <apex:commandButton value="New" action="{!addmode}" />
+            <apex:commandButton value="SaveAll" action="{!savejobs}"/>
+            <apex:commandButton value="EditAll" action="{!editmode}"/>
+        </apex:pageBlockButtons>
+
+         <!-- Edit -->
+        <apex:pageBlockTable value="{!joblist}" var="jb">
+            <apex:column headerValue="Designation" >
+            <apex:outputField value="{!jb.Designation__c}" rendered="{!!editflag}"/>
+            <apex:inputField value="{!jb.Designation__c}" rendered="{!editflag}"/>
+            </apex:column>
+            <apex:column headerValue="Experience" >
+            <apex:outputField value="{!jb.Experience_in_Years__c}" rendered="{!!editflag}" />
+            <apex:inputField value="{!jb.Experience_in_Years__c}" rendered="{!editflag}"/>
+            </apex:column>
+             <apex:column headerValue="Location" >
+             <apex:outputField value="{!jb.Location__c}" rendered="{!!editflag}"/>
+            <apex:inputField value="{!jb.Location__c}" rendered="{!editflag}"/>
+            </apex:column>
+            
+        </apex:pageBlockTable>
+      
+
+          
+    </apex:pageBlock>
+    
+    <!-- Create Job - start  -->
+
+    <apex:pageBlock rendered="{!createflag}">
+    <apex:messages />
+    <apex:commandButton value="Save" action="{!savejob}" />
+
+            <table>
+            <tr>
+            <td>Designation:</td>
+            <td><apex:inputText value="{!designation}" /></td>
+            </tr>
+            
+            <tr>
+            <td>Experience:</td>
+            <td><apex:inputText value="{!experience}" /></td>
+            </tr>
+
+             <tr>
+            <td>Location:</td>
+            <td><apex:inputText value="{!location}" /></td>
+            </tr>
+
+        </table>
+    </apex:pageBlock>
+
+     <!-- Create Job - end  -->
+
+
+   </apex:pageBlock>     
+   </apex:form>
+
+</apex:page>
