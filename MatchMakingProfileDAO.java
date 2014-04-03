@@ -1571,6 +1571,6 @@ public class MatchMakingProfileDAO
 
 	}
 
-ABCD
+EXIT
 
 }
